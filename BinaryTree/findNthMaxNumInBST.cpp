@@ -7,27 +7,33 @@
 #include <stdlib.h>
 #include "binaryTreeUtility.h"
 
-int findNthMaxImp(Node *root, int &n)
+int findNthMaxImp(Node *root, int &nth)
 {
     static int sResult = 0;
+    if(0 >= nth)
+    {
+        return sResult;
+    }
+
     if(root)
     {
-        findNthMaxImp(root->right, n);  
+        findNthMaxImp(root->right, nth);  
         printf("%d, ", root->num);
-        n--;
-        if(n == 0)      
+        nth--;
+        if(0 == nth)      
         {
             sResult = root->num;
+	    return sResult;
         }
-        findNthMaxImp(root->left, n);
+        findNthMaxImp(root->left, nth);
     }
     return sResult;
 }
 
-int findNthMaxNumber(Node *root, int N)
+int findNthMaxNumber(Node *root, int nth)
 {
     printf("Traverse BST with order right->parent->left.\n");
-    return findNthMaxImp(root, N);
+    return findNthMaxImp(root, nth);
 }
 
 
