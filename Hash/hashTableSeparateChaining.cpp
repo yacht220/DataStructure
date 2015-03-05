@@ -1,5 +1,5 @@
 /*
- * Hash table implementation.
+ * Hash table implementation for separate chaining.
  */
 
 #include <stdio.h>
