@@ -28,7 +28,6 @@ void siftHeapDownFromCurParent(int array[], int curParentIndex, int size)
 	rightChildIndex = leftChildIndex + 1;
 	largestChildIndex = leftChildIndex;
     }
-
 }
 
 void buildHeapFromGivenArray(int array[], int size)

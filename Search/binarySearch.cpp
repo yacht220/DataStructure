@@ -8,7 +8,7 @@
 
 int binarySearch(int sortedArray[], int left, int right, int targetData)
 {
-    int pivotIndex = (right + left)/2;
+    int pivotIndex = (right + left) / 2;
 
     if(sortedArray[pivotIndex] == targetData)
     {

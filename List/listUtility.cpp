@@ -1,5 +1,5 @@
 /*
- * Reverse a given simply linked list.
+ * List utility.
  */
 
 #include <stdio.h>

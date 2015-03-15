@@ -9,9 +9,17 @@
 
 void printPath(int stack[], int top)
 {
-    while(0 != top)
+    /*while(0 != top)
     {
         printf("%d, ", stack[--top]);
+    }*/
+
+    if (top > 0)
+    {
+        for (int i = 0; i < top; i++)
+	{
+	    printf("%d, ", stack[i]);
+	}
     }
     printf("\n");
 }
@@ -48,7 +56,6 @@ int main(int argc, char** argv)
     if(argc < 2)
     { 
         printf("usage: <app>.exe <sum>\n");
-        printf("       <sum> - 1...%d\n", ARRAY_SIZE);
         return -1;
     }
     char* sumChar = argv[1];
