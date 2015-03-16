@@ -1,0 +1,4 @@
+#ignore exe, obj files
+*.obj
+*.exe
+*.o
