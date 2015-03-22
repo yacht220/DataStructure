@@ -68,22 +68,22 @@ void insertElemInHashTable(HashTable* hashTbl, int key)
     if(NULL == targetNode)
     {
         int posInTable = hashFunc(key);
-	targetNode = (ListNode*)malloc(sizeof(ListNode));
-	targetNode->key = key;
+        targetNode = (ListNode*)malloc(sizeof(ListNode));
+        targetNode->key = key;
         if(NULL == hashTbl->table[posInTable])
-	{
-	    printf("Insert an element with key %d in hash table position %d, WITHOUT collision.\n", 
-	           key, posInTable);
-	    hashTbl->table[posInTable] = targetNode;
-	    targetNode->next = NULL;
-	}
-	else
-	{
-	    printf("Insert an element with key %d in hash table position %d, WITH collision.\n",
-	           key, posInTable);
-	    targetNode->next = hashTbl->table[posInTable];
-	    hashTbl->table[posInTable] = targetNode;
-	}
+        {
+            printf("Insert an element with key %d in hash table position %d, WITHOUT collision.\n", 
+                    key, posInTable);
+            hashTbl->table[posInTable] = targetNode;
+            targetNode->next = NULL;
+        }
+        else
+        {
+            printf("Insert an element with key %d in hash table position %d, WITH collision.\n",
+                    key, posInTable);
+            targetNode->next = hashTbl->table[posInTable];
+            hashTbl->table[posInTable] = targetNode;
+        }
     }
 }
 
@@ -94,28 +94,28 @@ void deleteElemInHashTable(HashTable* hashTbl, int key)
     {
         int posInTable = hashFunc(key);
         ListNode* prevNode = hashTbl->table[posInTable];
-	if(prevNode == targetNode)
-	{
-	    printf("Position %d in hash table contains only one element with key %d in list. Delete this element.\n", posInTable, key);
-	    free(targetNode);
+        if(prevNode == targetNode)
+        {
+            printf("Position %d in hash table contains only one element with key %d in list. Delete this element.\n", posInTable, key);
+            free(targetNode);
             hashTbl->table[posInTable] = NULL;
-	    return;
-	}
+            return;
+        }
 
-	while(key != prevNode->next->key)
-	{
-	    prevNode = prevNode->next;
-	}
-	printf("Delete an element with key %d.\n", key);
-	prevNode->next = targetNode->next;
-	free(targetNode);
+        while(key != prevNode->next->key)
+        {
+            prevNode = prevNode->next;
+        }
+        printf("Delete an element with key %d.\n", key);
+        prevNode->next = targetNode->next;
+        free(targetNode);
     }
 }
 
 int main(int argc, char** argv)
 {
     int keySet[] = {40, 2, 78, 1100, 23, 45, 89, 200, 429, 234, 485, 1, 9, 29};
-    int sizeOfKeySet = sizeof(keySet)/sizeof(keySet[0]);
+    int sizeOfKeySet = sizeof(keySet) / sizeof(keySet[0]);
     HashTable hashTbl;
     initializeHashTable(hashTbl);
     for(int i = 0; i < sizeOfKeySet; i++)
@@ -127,7 +127,7 @@ int main(int argc, char** argv)
     {
         findPosInHashTable(&hashTbl, keySet[i]);
     }
-    
+
     findPosInHashTable(&hashTbl, 11);
 
     for(int i = 0; i < sizeOfKeySet; i++)
@@ -139,4 +139,6 @@ int main(int argc, char** argv)
     {
         findPosInHashTable(&hashTbl, keySet[i]);
     }
+
+    return 1;
 }

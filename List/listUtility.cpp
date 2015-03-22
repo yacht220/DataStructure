@@ -13,8 +13,8 @@ void insertNodeToSimplyLinkedList(Node*& head, int value)
     {
         printf("Empty simply linked list. Create a head.\n");
         head = (Node*)malloc(sizeof(Node));
-	head->data = value;
-	head->next = NULL;
+        head->data = value;
+        head->next = NULL;
         return;
     }
 
@@ -27,6 +27,41 @@ void insertNodeToSimplyLinkedList(Node*& head, int value)
     newNode->data = value;
     newNode->next = NULL;
     curPtr->next = newNode;
+}
+
+void deleteNodeFromSimplyLinkedList(Node*& head, int value)
+{
+    if (NULL == head)
+    {
+        printf("Empty list.\n");
+        return;
+    }
+
+    Node* listPtr = head;
+
+    if (head->data == value)
+    {
+        head = head->next;
+        free(listPtr);
+        return;
+    }
+
+    /* Find prev node */
+    while (listPtr->next != NULL && listPtr->next->data != value)
+    {
+        listPtr = listPtr->next;
+    }
+
+    if (listPtr->next != NULL)
+    {
+        Node* targetNode = listPtr->next;
+        listPtr->next = listPtr->next->next;
+        free(targetNode);
+    }
+    else
+    {
+        printf("Node with value %d NOT found.\n", value);
+    }
 }
 
 Node* initSimplyLinkedList(int array[], int size)
@@ -44,14 +79,14 @@ void printSimplyLinkedList(Node* head)
     if(NULL == head)
     {
         printf("Empty list.\n");
-	return;
+        return;
     }
 
     Node* cur = head;
     while(NULL != cur)
     {
         printf("%d, ", cur->data);
-	cur = cur->next;
+        cur = cur->next;
     }
     printf("\n");
 }

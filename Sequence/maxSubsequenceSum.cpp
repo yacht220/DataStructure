@@ -18,21 +18,21 @@ int maxSubsequenceSum(int array[], int size)
     {
         tmpSum += array[i];
 
-	if(tmpSum < 0)
-	{
-	    maxSumSubsequenceStartAnchorIndex = i + 1;
-	    tmpSum = 0;
-	}
-	else if(tmpSum > maxSum)
-	{
-	    maxSumSubsequenceSize = 0;
-	    for(int j = maxSumSubsequenceStartAnchorIndex, k = 0; j <= i; j++, k++ )
-	    {
-	        maxSumSubsequence[k] = array[j];
-		maxSumSubsequenceSize++;
-	    }
-	    maxSum = tmpSum;
-	}
+        if(tmpSum < 0)
+        {
+            maxSumSubsequenceStartAnchorIndex = i + 1;
+            tmpSum = 0;
+        }
+        else if(tmpSum > maxSum)
+        {
+            maxSumSubsequenceSize = 0;
+            for(int j = maxSumSubsequenceStartAnchorIndex, k = 0; j <= i; j++, k++ )
+            {
+                maxSumSubsequence[k] = array[j];
+                maxSumSubsequenceSize++;
+            }
+            maxSum = tmpSum;
+        }
     }
 
     printf("Subsequence with max sum: ");

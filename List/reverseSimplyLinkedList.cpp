@@ -12,25 +12,25 @@ void reverseSimplyLinkedList(Node*& head)
     if(NULL == head)
     {
         printf("Empty list.\n");
-	return;
+        return;
     }
 
     if(NULL == head->next)
     {
         printf("Only one node in list.\n");
-	return;
+        return;
     }
-    
+
     Node* cur = head;
     Node* prev = NULL;
     Node* nex = cur->next;
-    
+
     while(NULL != nex)
     {
         cur->next = prev;
-	prev = cur;
-	cur = nex;
-	nex = cur->next;
+        prev = cur;
+        cur = nex;
+        nex = cur->next;
     }
 
     cur->next = prev;
@@ -45,7 +45,7 @@ Node* reverseSimplyLinkedListRecursion(Node* head)
     }
 
     Node* newHead = reverseSimplyLinkedListRecursion(head->next);
-    
+
     head->next->next = head;
     head->next = NULL;
 

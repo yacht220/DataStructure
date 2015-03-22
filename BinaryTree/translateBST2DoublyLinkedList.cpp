@@ -15,8 +15,8 @@ void translateBST2DoublyLinkedList(Node* root, Node*& head, Node*& tail)
     if(NULL == root)
     {
         head = NULL;
-	tail = NULL;
-	return;
+        tail = NULL;
+        return;
     }
 
     translateBST2DoublyLinkedList(root->left, head, leftTailTmp);
@@ -25,7 +25,7 @@ void translateBST2DoublyLinkedList(Node* root, Node*& head, Node*& tail)
     if(NULL != leftTailTmp)
     {
         root->left = leftTailTmp;
-	leftTailTmp->right = root;
+        leftTailTmp->right = root;
     }
     else
     {
@@ -35,7 +35,7 @@ void translateBST2DoublyLinkedList(Node* root, Node*& head, Node*& tail)
     if(NULL != rightHeadTmp)
     {
         root->right = rightHeadTmp;
-	rightHeadTmp->left = root;
+        rightHeadTmp->left = root;
     }
     else
     {

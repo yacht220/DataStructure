@@ -7,55 +7,55 @@
 #include "insertionSort.h"
 #include "quickSortUtility.h"
 
- /**
-  * @brief Do as quicksort.
-  * @param kthMin - Begin with 1.
-  */
+/**
+ * @brief Do as quicksort.
+ * @param kthMin - Begin with 1.
+ */
 void quickSelect(int array[], int left, int right, int kthMin)
 {
     int size = right - left + 1;
     if (size > 3)
     {
-	int pivotIndex = median(array, left, right);
-	int pivot = array[pivotIndex];
+        int pivotIndex = median(array, left, right);
+        int pivot = array[pivotIndex];
 
         array[pivotIndex] = array[right - 1];
-	array[right - 1] = pivot;
+        array[right - 1] = pivot;
 
-	int i = left;
-	int j = right - 1;
-	int tmp = 0;
-	for (;;)
-	{
-	    while (array[++i] < pivot) {}
-	    while (array[--j] > pivot) {}
-	    if (i < j)
-	    {
-	        tmp = array[i];
-		array[i] = array[j];
-		array[j] = tmp;
-	    }
-	    else
-	    {
-	        break;
-	    }
-	}
+        int i = left;
+        int j = right - 1;
+        int tmp = 0;
+        for (;;)
+        {
+            while (array[++i] < pivot) {}
+            while (array[--j] > pivot) {}
+            if (i < j)
+            {
+                tmp = array[i];
+                array[i] = array[j];
+                array[j] = tmp;
+            }
+            else
+            {
+                break;
+            }
+        }
 
-	array[right - 1] = array[i];
-	array[i] = pivot;
+        array[right - 1] = array[i];
+        array[i] = pivot;
 
-	if (kthMin - 1 < i)
-	{
-	    quickSelect(array, left, i - 1, kthMin);
-	}
-	else if (kthMin - 1 > i)
-	{
-	    quickSelect(array, i + 1, right, kthMin);
-	}
-	else
-	{
-	    printf("%dth minimum element is pivot itself.\n", kthMin);
-	}
+        if (kthMin - 1 < i)
+        {
+            quickSelect(array, left, i - 1, kthMin);
+        }
+        else if (kthMin - 1 > i)
+        {
+            quickSelect(array, i + 1, right, kthMin);
+        }
+        else
+        {
+            printf("%dth minimum element is pivot itself.\n", kthMin);
+        }
     }
     else
     {
@@ -69,7 +69,7 @@ int main(int argc, char** argv)
     if (argc < 2)
     {
         printf("Wrong usage.\n");
-	return -1;
+        return -1;
     }
 
     int kthMin = atoi(argv[1]);

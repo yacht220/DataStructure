@@ -1,5 +1,6 @@
 /*
- * Define a Stack data structure, define a min function which could retrieve the minimum element in  * Stack. The order of complexity for push, pop and min function should be O(1). 
+ * Define a Stack data structure, define a min function which could retrieve the minimum element in Stack. 
+ * The order of complexity for push, pop and min function should be O(1). 
  */
 
 #include <stdio.h>
@@ -41,13 +42,13 @@ void pushStack(Stack& stack, int value)
     else
     {
         if(stack.array[stack.top - 1].min > value)
-	{
-	    stack.array[stack.top].min = value;
-	}
-	else
-	{
-	    stack.array[stack.top].min = stack.array[stack.top - 1].min;
-	}
+        {
+            stack.array[stack.top].min = value;
+        }
+        else
+        {
+            stack.array[stack.top].min = stack.array[stack.top - 1].min;
+        }
     }
     stack.top++;
 }
@@ -57,7 +58,7 @@ int popStack(Stack& stack)
     if(0 == stack.top)
     {
         printf("Empty stack.\n");
-	return -1;
+        return -1;
     }
     stack.top--;
     return stack.array[stack.top].data;
@@ -68,7 +69,7 @@ int findMinInStack(Stack stack)
     if(0 == stack.top)
     {
         printf("Empty stack.\n");
-	return -1;
+        return -1;
     }
     return stack.array[stack.top-1].min;
 }

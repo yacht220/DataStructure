@@ -16,7 +16,7 @@ void reverseString(char* str)
     char* strTmp = str;
     char charTmp = '\0';
     int size = 0;
-   
+
     while('\0' != *(strTmp))
     {
         size++;
@@ -27,10 +27,10 @@ void reverseString(char* str)
     for(int i = 0; i < size/2; i++ )
     {
         charTmp = *strTmp;
-	*strTmp = *str;
-	*str = charTmp;
+        *strTmp = *str;
+        *str = charTmp;
         str++;
-	strTmp--;
+        strTmp--;
     }
 }
 
@@ -39,7 +39,7 @@ int main(int argc, char** argv)
     if(argc < 2)
     {
         printf("Wrong input.\n");
-	return -1;
+        return -1;
     }
 
     reverseString(argv[1]);

@@ -34,7 +34,7 @@ int main(int argc, char** argv)
     if(argc < 2)
     {
         printf("Wrong usage.\n");
-	return -1;
+        return -1;
     }
 
     int targetData = atoi(argv[1]);
@@ -49,8 +49,8 @@ int main(int argc, char** argv)
     else
     {
         printf("Target data: %d. Found index: %d. Value in array: %d.\n", 
-               targetData, 
-	       foundIndex,
-	       sortedArray[foundIndex]);
+                targetData, 
+                foundIndex,
+                sortedArray[foundIndex]);
     }
 }

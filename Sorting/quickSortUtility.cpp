@@ -15,14 +15,14 @@ int partition(int array[], int left, int right)
     for(int index = firstLargerIndex; index <= right; index++)
     {
         if(array[index] < pivot)
-	{
-	    tmpValue = array[index];
-	    array[index] = array[firstLargerIndex];
-	    array[firstLargerIndex] = tmpValue;
-	    firstLargerIndex++;
-	}
+        {
+            tmpValue = array[index];
+            array[index] = array[firstLargerIndex];
+            array[firstLargerIndex] = tmpValue;
+            firstLargerIndex++;
+        }
     }
-    
+
     pivotIndex = firstLargerIndex-1;
     tmpValue = array[pivotIndex];
     array[pivotIndex] = array[left];
@@ -39,27 +39,27 @@ int median(int array[], int left, int right)
     if (array[left] > array[mid])
     {
         tmp = array[left];
-	array[left] = array[mid];
-	array[mid] = tmp;
+        array[left] = array[mid];
+        array[mid] = tmp;
     }
 
     if (array[right] < array[mid])
     {
         if (array[right] < array[left])
-	{
-	    tmp = array[right];
-	    array[right] = array[mid];
-	    array[mid] = array[left];
-	    array[left] = tmp;
-	}
-	else
-	{
-	    tmp = array[right];
-	    array[right] = array[mid];
-	    array[mid] = tmp;
-	}
+        {
+            tmp = array[right];
+            array[right] = array[mid];
+            array[mid] = array[left];
+            array[left] = tmp;
+        }
+        else
+        {
+            tmp = array[right];
+            array[right] = array[mid];
+            array[mid] = tmp;
+        }
     }
-    
+
     return mid;
 }
 
@@ -67,7 +67,7 @@ int partitionOptimized(int array[], int left, int right)
 {
     /* Find pivot */
     int pivotIndex = median(array, left, right);
-   
+
     /* Swap pivot with value in right - 1 */
     int pivot = array[pivotIndex];
     array[pivotIndex] = array[right - 1];
@@ -77,24 +77,24 @@ int partitionOptimized(int array[], int left, int right)
     int i = left;
     int j = right - 1;
     int tmp = 0;
-    
+
     for (;;)
     {
-	while(array[++i] < pivot) {}
+        while(array[++i] < pivot) {}
         while(array[--j] > pivot) {}
 
         if (i < j)
         {
             tmp = array[i];
-	    array[i] = array[j];
-	    array[j] = tmp;
+            array[i] = array[j];
+            array[j] = tmp;
         }
         else
         {  
             break;
         }
     }
-    
+
     /* Restore pivot to location i */
     array[right - 1] = array[i];
     array[i] = pivot;

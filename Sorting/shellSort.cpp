@@ -10,41 +10,49 @@
 
 void shellSort(int array[], int size)
 {
-   for (int increment = size / 2; increment >= 1; increment /= 2)
-   {
-       /* per increment */
-       for (int startIndexOfEachDataSet = 0; 
-            startIndexOfEachDataSet < increment; 
-	    startIndexOfEachDataSet++)
-       {
-	   /*  
-	    * do bubblesort in each of data sets per increment,
-	    * which has "increment" span between adjacent data. 
-	    */
-	   int lastUnsortedIndexPerDataSet = startIndexOfEachDataSet;
-	   while (lastUnsortedIndexPerDataSet < size)
-	   {
-	       lastUnsortedIndexPerDataSet += increment;
-	   }
-	   lastUnsortedIndexPerDataSet -= increment;
+    for (int increment = size / 2; increment >= 1; increment /= 2)
+    {
+        /* per increment */
+        for (int startIndexOfEachDataSet = 0; 
+                startIndexOfEachDataSet < increment; 
+                startIndexOfEachDataSet++)
+        {
+            /*  
+             * do bubblesort in each of data sets per increment,
+             * which has "increment" span between adjacent data. 
+             */
+            int lastUnsortedIndexPerDataSet = startIndexOfEachDataSet;
+            while (lastUnsortedIndexPerDataSet < size)
+            {
+                lastUnsortedIndexPerDataSet += increment;
+            }
+            lastUnsortedIndexPerDataSet -= increment;
 
-           while (lastUnsortedIndexPerDataSet > startIndexOfEachDataSet)
-	   {
-	       for (int curIndexPerDataSet = startIndexOfEachDataSet; 
-	            curIndexPerDataSet + increment <= lastUnsortedIndexPerDataSet; 
-		    curIndexPerDataSet += increment)
-	       {
-	           if (array[curIndexPerDataSet] > array[curIndexPerDataSet + increment])
-	           {
-	               int tmp = array[curIndexPerDataSet];
-		       array[curIndexPerDataSet] = array[curIndexPerDataSet + increment];
-		       array[curIndexPerDataSet + increment] = tmp;
-	           }
-	       }
-	       lastUnsortedIndexPerDataSet -= increment;
-	   }
-       }
-   }
+            while (lastUnsortedIndexPerDataSet > startIndexOfEachDataSet)
+            {
+                bool isSortedInUnsortedSubArray = true;
+                for (int curIndexPerDataSet = startIndexOfEachDataSet; 
+                        curIndexPerDataSet + increment <= lastUnsortedIndexPerDataSet; 
+                        curIndexPerDataSet += increment)
+                {
+                    if (array[curIndexPerDataSet] > array[curIndexPerDataSet + increment])
+                    {
+                        int tmp = array[curIndexPerDataSet];
+                        array[curIndexPerDataSet] = array[curIndexPerDataSet + increment];
+                        array[curIndexPerDataSet + increment] = tmp;
+                        isSortedInUnsortedSubArray = false;
+                    }
+                }
+                lastUnsortedIndexPerDataSet -= increment;
+
+                if (true == isSortedInUnsortedSubArray)
+                {
+                    printf("NO need to loop.\n");
+                    break;
+                }
+            }
+        }
+    }
 }
 
 int main(int argc, char** argv)

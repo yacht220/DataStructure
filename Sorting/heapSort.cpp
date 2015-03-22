@@ -10,23 +10,23 @@ void siftHeapDownFromCurParent(int array[], int curParentIndex, int size)
     while(leftChildIndex < size)
     {
         if(rightChildIndex < size && array[leftChildIndex] < array[rightChildIndex])
-	{
-	    largestChildIndex = rightChildIndex;
-	}
+        {
+            largestChildIndex = rightChildIndex;
+        }
 
-	if(array[largestChildIndex] < array[curParentIndex])
-	{
-	    break;
-	}
+        if(array[largestChildIndex] < array[curParentIndex])
+        {
+            break;
+        }
 
-	int tmp = array[curParentIndex];
-	array[curParentIndex] = array[largestChildIndex];
-	array[largestChildIndex] = tmp;
+        int tmp = array[curParentIndex];
+        array[curParentIndex] = array[largestChildIndex];
+        array[largestChildIndex] = tmp;
 
-	curParentIndex = largestChildIndex;
-	leftChildIndex = curParentIndex * 2 + 1;
-	rightChildIndex = leftChildIndex + 1;
-	largestChildIndex = leftChildIndex;
+        curParentIndex = largestChildIndex;
+        leftChildIndex = curParentIndex * 2 + 1;
+        rightChildIndex = leftChildIndex + 1;
+        largestChildIndex = leftChildIndex;
     }
 }
 
@@ -45,7 +45,7 @@ void heapSort(int array[], int size)
     {
         int tmp = array[0];
         array[0] = array[unsortedSize - 1];
-	array[unsortedSize - 1] = tmp;
+        array[unsortedSize - 1] = tmp;
         siftHeapDownFromCurParent(array, 0, unsortedSize - 1);
     }
 }

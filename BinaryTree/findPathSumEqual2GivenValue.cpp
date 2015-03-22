@@ -10,16 +10,16 @@
 void printPath(int stack[], int top)
 {
     /*while(0 != top)
-    {
-        printf("%d, ", stack[--top]);
-    }*/
+      {
+      printf("%d, ", stack[--top]);
+      }*/
 
     if (top > 0)
     {
         for (int i = 0; i < top; i++)
-	{
-	    printf("%d, ", stack[i]);
-	}
+        {
+            printf("%d, ", stack[i]);
+        }
     }
     printf("\n");
 }
@@ -28,24 +28,24 @@ void findPathEqual2Sum(Node* root, int sum, int stack[], int top)
 {
     stack[top++] = root->num;
     sum -= root->num;
-    
+
     if(NULL == root->left && NULL == root->right)
     {
         if(0 == sum)
-	{
-	    printPath(stack, top);
-	}
+        {
+            printPath(stack, top);
+        }
     }
     else
     {
         if(NULL != root->left)
-	{
+        {
             findPathEqual2Sum(root->left, sum, stack, top);
-	}	
-	if(NULL != root->right)
-	{
+        }	
+        if(NULL != root->right)
+        {
             findPathEqual2Sum(root->right, sum, stack, top);
-	}
+        }
     }
     sum += root->num;
     top--;

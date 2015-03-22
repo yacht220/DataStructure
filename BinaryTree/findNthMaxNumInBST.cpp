@@ -23,7 +23,7 @@ int findNthMaxImp(Node *root, int &nth)
         if(0 == nth)      
         {
             sResult = root->num;
-	    return sResult;
+            return sResult;
         }
         findNthMaxImp(root->left, nth);
     }
@@ -35,7 +35,6 @@ int findNthMaxNumber(Node *root, int nth)
     printf("Traverse BST with order right->parent->left.\n");
     return findNthMaxImp(root, nth);
 }
-
 
 int main(int argc, char **argv)
 {
@@ -49,7 +48,7 @@ int main(int argc, char **argv)
     int nthMax = atoi(inputNthMaxIndexChar);
     PNode root = NULL;
     int result = 0;
-    
+
     if(nthMax <=0 || nthMax > ARRAY_SIZE)
     {
         printf("Please input <nth_max_num_index> with range 1...%d.\n", ARRAY_SIZE);
@@ -58,6 +57,6 @@ int main(int argc, char **argv)
     createBST(&root);
     result = findNthMaxNumber(root, nthMax);
     printf("\n\nThe %dth max number = %d", nthMax, result);
-    
+
     return 1;
 }

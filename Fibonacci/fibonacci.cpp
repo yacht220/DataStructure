@@ -6,15 +6,15 @@
 #include <memory.h>
 
 /**
-  * @brief Very inefficient recursion algorithm.
-  * @param nth - Nth number in Fib. Start with 1.
-  */
+ * @brief Very inefficient recursion algorithm.
+ * @param nth - Nth number in Fib. Start with 1.
+ */
 unsigned int fibRecursion(int nth, unsigned int fibArray[])
 {
     if (nth <= 2)
     {
         fibArray[nth - 1] = 1;
-	return 1;
+        return 1;
     }
     else
     {
@@ -23,9 +23,9 @@ unsigned int fibRecursion(int nth, unsigned int fibArray[])
 }
 
 /**
-  * @brief Optimized without recursion.
-  * @param lengthOfFib - Length of the Fib. Start with 1.
-  */
+ * @brief Optimized without recursion.
+ * @param lengthOfFib - Length of the Fib. Start with 1.
+ */
 void fibNonRecursion(int lengthOfFib, unsigned int fibArray[])
 {
     int prevIndex;
@@ -36,11 +36,11 @@ void fibNonRecursion(int lengthOfFib, unsigned int fibArray[])
         {
             fibArray[i] = 1;
         }
-	else
-	{
-	    prevIndex = i - 1;
-	    prevOfPrevIndex = prevIndex - 1;
-	    fibArray[i] = fibArray[prevIndex] + fibArray[prevOfPrevIndex];
+        else
+        {
+            prevIndex = i - 1;
+            prevOfPrevIndex = prevIndex - 1;
+            fibArray[i] = fibArray[prevIndex] + fibArray[prevOfPrevIndex];
         }
 
     }
@@ -53,7 +53,7 @@ int main(int argc, char** argv)
         printf("Wrong usage.\n");
         return -1;
     }
-    
+
     int size = atoi(argv[1]);
     unsigned int* fibArray = (unsigned int*)malloc(sizeof(unsigned int) * size);
     memset(fibArray, 0, sizeof(unsigned int) * size);
