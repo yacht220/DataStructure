@@ -36,6 +36,8 @@ int median(int array[], int left, int right)
     int tmp = 0;
     int mid = (left + right) / 2;
 
+    printf("median - left = %d, right = %d, mid = %d\n", left, right, mid);
+
     if (array[left] > array[mid])
     {
         tmp = array[left];
@@ -65,8 +67,10 @@ int median(int array[], int left, int right)
 
 int partitionOptimized(int array[], int left, int right)
 {
+    printf("\nleft = %d, right = %d\n", left, right);
     /* Find pivot */
     int pivotIndex = median(array, left, right);
+    printf("pivotIndexTmp = %d\n", pivotIndex);
 
     /* Swap pivot with value in right - 1 */
     int pivot = array[pivotIndex];
@@ -81,6 +85,7 @@ int partitionOptimized(int array[], int left, int right)
     for (;;)
     {
         while(array[++i] < pivot) {}
+        // BUG!! j could be 0!!
         while(array[--j] > pivot) {}
 
         if (i < j)
@@ -111,6 +116,7 @@ void quickSort(int array[], int left, int right)
 
     //int pivotIndex = partition(array, left, right);
     int pivotIndex = partitionOptimized(array, left, right);
+    printf("pivotIndex = %d\n", pivotIndex);
     quickSort(array, left, pivotIndex - 1);
     quickSort(array, pivotIndex + 1, right);
 }
