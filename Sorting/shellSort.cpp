@@ -14,8 +14,8 @@ void shellSort(int array[], int size)
     {
         /* per increment */
         for (int startIndexOfEachDataSet = 0; 
-                startIndexOfEachDataSet < increment; 
-                startIndexOfEachDataSet++)
+             startIndexOfEachDataSet < increment; 
+             startIndexOfEachDataSet++)
         {
             /*  
              * do bubblesort in each of data sets per increment,
@@ -32,8 +32,8 @@ void shellSort(int array[], int size)
             {
                 bool isSortedInUnsortedSubArray = true;
                 for (int curIndexPerDataSet = startIndexOfEachDataSet; 
-                        curIndexPerDataSet + increment <= lastUnsortedIndexPerDataSet; 
-                        curIndexPerDataSet += increment)
+                     curIndexPerDataSet + increment <= lastUnsortedIndexPerDataSet; 
+                     curIndexPerDataSet += increment)
                 {
                     if (array[curIndexPerDataSet] > array[curIndexPerDataSet + increment])
                     {

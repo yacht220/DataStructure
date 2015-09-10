@@ -23,7 +23,7 @@
 
   void popStack(StackNode*& top)
   {
-  if(NULL != top)
+  if (NULL != top)
   {
   StackNode* tmpNode = top;
   top = top->next;
@@ -40,7 +40,7 @@ struct DoublyLinkedListNode
 
 void insertNodeToRearOfDoublyLinkedList(DoublyLinkedListNode*& head, int num)
 {
-    if(NULL == head)
+    if (NULL == head)
     {
         head = (DoublyLinkedListNode*)malloc(sizeof(DoublyLinkedListNode));
         head->num = num;
@@ -53,7 +53,7 @@ void insertNodeToRearOfDoublyLinkedList(DoublyLinkedListNode*& head, int num)
         DoublyLinkedListNode* newNode = (DoublyLinkedListNode*)malloc(sizeof(DoublyLinkedListNode));
         newNode->num = num;
         newNode->next = NULL;
-        while(NULL != tmpNode->next)
+        while (NULL != tmpNode->next)
         {
             tmpNode = tmpNode->next;
         }
@@ -64,14 +64,14 @@ void insertNodeToRearOfDoublyLinkedList(DoublyLinkedListNode*& head, int num)
 
 void deleteRearNodeInDoublyLinkedList(DoublyLinkedListNode*& head)
 {
-    if(NULL != head)
+    if (NULL != head)
     {
         DoublyLinkedListNode* tmpNode = head;
-        while(NULL != tmpNode->next)
+        while (NULL != tmpNode->next)
         {
             tmpNode = tmpNode->next;
         }
-        if(head == tmpNode)
+        if (head == tmpNode)
         {
             free(tmpNode);
             head = NULL;
@@ -88,15 +88,16 @@ void deleteRearNodeInDoublyLinkedList(DoublyLinkedListNode*& head)
 void findAllPathsWithGivenSum(const Node* root, int givenSum)
 {
     static int sumRecord = 0;
+    static bool foundFlag = false;
     static DoublyLinkedListNode* headOfDoublyLinkedListForBinaryTreeNode = NULL;
 
-    if(NULL == root)
+    if (NULL == root)
     {
         return;
     }
 
     sumRecord += root->num;
-    if(sumRecord > givenSum)
+    if (sumRecord > givenSum)
     {
         printf("Current sum is greater than given sum. Give up this path.\n");
         sumRecord -= root->num;
@@ -105,11 +106,12 @@ void findAllPathsWithGivenSum(const Node* root, int givenSum)
 
     insertNodeToRearOfDoublyLinkedList(headOfDoublyLinkedListForBinaryTreeNode, root->num);
 
-    if(sumRecord == givenSum && NULL == root->left && NULL == root->right)
+    if (sumRecord == givenSum && NULL == root->left && NULL == root->right)
     {
         printf("Path found: ");
+        foundFlag = true;
         DoublyLinkedListNode* it = headOfDoublyLinkedListForBinaryTreeNode;
-        while(NULL != it->next)
+        while (NULL != it->next)
         {
             printf("%d, ", it->num);
             it = it->next;
@@ -126,7 +128,7 @@ void findAllPathsWithGivenSum(const Node* root, int givenSum)
     deleteRearNodeInDoublyLinkedList(headOfDoublyLinkedListForBinaryTreeNode);
     sumRecord -= root->num;
 
-    if(0 == sumRecord)
+    if (0 == sumRecord && false == foundFlag)
     {
         printf("NO path found.\n");
     }
@@ -134,7 +136,7 @@ void findAllPathsWithGivenSum(const Node* root, int givenSum)
 
 int main(int argc, char** argv)
 {
-    if(argc < 2)
+    if (argc < 2)
     {
         printf("Wrong usage.\n");
         return -1;

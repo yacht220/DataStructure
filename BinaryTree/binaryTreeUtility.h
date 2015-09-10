@@ -12,7 +12,9 @@ struct Node
 typedef Node* PNode;
 
 void insertBST(PNode* root, int value);
-
 void createBST(PNode *t);
+void preOrderBinaryTree(PNode root);
+void inOrderBinaryTree(PNode root);
+void postOrderBinaryTree(PNode root);
 
 #endif

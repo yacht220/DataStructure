@@ -29,19 +29,19 @@ void initStack(Stack& stack, int maxSize)
 
 void pushStack(Stack& stack, int value)
 {
-    if(stack.top == stack.size)
+    if (stack.top == stack.size)
     {
         printf("Out of size.\n");
         return;
     }
     stack.array[stack.top].data = value;
-    if(0 == stack.top)
+    if (0 == stack.top)
     {
         stack.array[stack.top].min = value;
     }
     else
     {
-        if(stack.array[stack.top - 1].min > value)
+        if (stack.array[stack.top - 1].min > value)
         {
             stack.array[stack.top].min = value;
         }
@@ -55,7 +55,7 @@ void pushStack(Stack& stack, int value)
 
 int popStack(Stack& stack)
 {
-    if(0 == stack.top)
+    if (0 == stack.top)
     {
         printf("Empty stack.\n");
         return -1;
@@ -66,7 +66,7 @@ int popStack(Stack& stack)
 
 int findMinInStack(Stack stack)
 {
-    if(0 == stack.top)
+    if (0 == stack.top)
     {
         printf("Empty stack.\n");
         return -1;
@@ -79,7 +79,7 @@ int main(int argc, char** argv)
     Stack stack;
     initStack(stack, 100);
     int dataSet[] = {40, 2, 78, 1100, 23, 45, 89, 200, 429, 234, 485, 1, 9, 29};
-    for(int i = 0; i < (sizeof(dataSet)/sizeof(dataSet[0])); i++)
+    for (int i = 0; i < (sizeof(dataSet)/sizeof(dataSet[0])); i++)
     {
         pushStack(stack, dataSet[i]);   
     }

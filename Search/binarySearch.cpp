@@ -10,16 +10,16 @@ int binarySearch(int sortedArray[], int left, int right, int targetData)
 {
     int pivotIndex = (right + left) / 2;
 
-    if(sortedArray[pivotIndex] == targetData)
+    if (sortedArray[pivotIndex] == targetData)
     {
         return pivotIndex;
     }
-    else if(left >= right)
+    else if (left >= right)
     {
         printf("Nothing found.\n");
         return -1;
     }
-    else if(sortedArray[pivotIndex] > targetData)
+    else if (sortedArray[pivotIndex] > targetData)
     {
         return binarySearch(sortedArray, left, pivotIndex - 1, targetData);
     }
@@ -31,7 +31,7 @@ int binarySearch(int sortedArray[], int left, int right, int targetData)
 
 int main(int argc, char** argv)
 {
-    if(argc < 2)
+    if (argc < 2)
     {
         printf("Wrong usage.\n");
         return -1;
@@ -42,7 +42,7 @@ int main(int argc, char** argv)
     int left = 0;
     int right = sizeof(sortedArray)/sizeof(sortedArray[0]) - 1; 
     int foundIndex = -1;
-    if(-1 == (foundIndex = binarySearch(sortedArray, left, right, targetData)))
+    if (-1 == (foundIndex = binarySearch(sortedArray, left, right, targetData)))
     {
         return -1;
     }

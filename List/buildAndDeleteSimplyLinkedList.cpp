@@ -11,7 +11,7 @@ int main(int argc, char** argv)
     int array[] = {40, 2, 78, 1100, 23, 45, 89, 200, 429, 234, 485, 1, 9, 29};     
     Node* head = initSimplyLinkedList(array, sizeof(array) / sizeof(array[0])); 
     int inputEntry;
-    while(1)
+    while (1)
     {
         printSimplyLinkedList(head);
         printf("Type the entry value you want to delete: ");

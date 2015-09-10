@@ -11,7 +11,7 @@ void insertBST(PNode* root, int value)
 {
     PNode* ptrNode = NULL;
 
-    if(NULL == *root)
+    if (NULL == *root)
     {
         *root = (PNode)malloc(sizeof(Node));
         (*root)->left = NULL;
@@ -21,9 +21,9 @@ void insertBST(PNode* root, int value)
     else
     {
         ptrNode = root;
-        while(NULL != *ptrNode)
+        while (NULL != *ptrNode)
         {
-            if(value < (*ptrNode)->num)
+            if (value < (*ptrNode)->num)
             {
                 ptrNode = &(*ptrNode)->left;
             }
@@ -44,8 +44,45 @@ void createBST(PNode *t)
 {        
     printf("Create binary search tree.\n");
     int array[ARRAY_SIZE] = {5,2,1,4,7,8,3,6,9,10};
-    for(int i = 0; i < ARRAY_SIZE; i++)
+    for (int i = 0; i < ARRAY_SIZE; i++)
     {
         insertBST(t, array[i]);
     }
 }  
+
+void preOrderBinaryTree(PNode root)
+{
+    if (NULL == root)
+    {
+        return;
+    }
+
+    printf("%d, ", root->num);
+    preOrderBinaryTree(root->left);
+    preOrderBinaryTree(root->right);
+}
+
+void inOrderBinaryTree(PNode root)
+{
+    if (NULL == root)
+    {
+        return;
+    }
+
+    inOrderBinaryTree(root->left);
+    printf("%d, ", root->num);
+    inOrderBinaryTree(root->right);
+}
+
+void postOrderBinaryTree(PNode root)
+{
+    if (NULL == root)
+    {
+        return;
+    }
+
+    postOrderBinaryTree(root->left);
+    postOrderBinaryTree(root->right);
+    printf("%d, ", root->num);
+}
+

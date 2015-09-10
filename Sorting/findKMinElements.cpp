@@ -40,8 +40,8 @@ void findKMinElementsVariantA(int array[], int size, int numOfMin)
             curElem = array[iteratorIndexOutOfSubArray];
             array[iteratorIndexOutOfSubArray] = array[lastIndexInSubArray];
             for (interatorIndexInSubArray = lastIndexInSubArray - 1; 
-                    interatorIndexInSubArray >= 0 && array[interatorIndexInSubArray] > curElem; 
-                    interatorIndexInSubArray--)
+                 interatorIndexInSubArray >= 0 && array[interatorIndexInSubArray] > curElem; 
+                 interatorIndexInSubArray--)
             {
                 array[interatorIndexInSubArray + 1] = array[interatorIndexInSubArray];
             }

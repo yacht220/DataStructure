@@ -4,12 +4,12 @@
 
 int* mergeSort(int array[], int size)
 {
-    if(1 == size)
+    if (1 == size)
     {
         return array;
     }
 
-    int firstHalfSize = (int)(size/2);
+    int firstHalfSize = (int)(size / 2);
     int secondHalfSize = size - firstHalfSize;
     int startIndexOfSecondHalf = firstHalfSize;
 
@@ -22,9 +22,9 @@ int* mergeSort(int array[], int size)
     int resultSortedArrayIndex = 0;
 
     /* Compare and copy smaller to new array */
-    while(firstSortedArrayIndex < firstHalfSize && secondSortedArrayIndex < secondHalfSize)
+    while (firstSortedArrayIndex < firstHalfSize && secondSortedArrayIndex < secondHalfSize)
     {
-        if(firstSortedArray[firstSortedArrayIndex] < secondSortedArray[secondSortedArrayIndex])
+        if (firstSortedArray[firstSortedArrayIndex] < secondSortedArray[secondSortedArrayIndex])
         {
             resultSortedArray[resultSortedArrayIndex] = firstSortedArray[firstSortedArrayIndex];
             firstSortedArrayIndex++;
@@ -38,11 +38,11 @@ int* mergeSort(int array[], int size)
     }
 
     /* Copy rest to new array */
-    if(firstSortedArrayIndex >= firstHalfSize)
+    if (firstSortedArrayIndex >= firstHalfSize)
     {
         memcpy(&resultSortedArray[resultSortedArrayIndex], 
-                &secondSortedArray[secondSortedArrayIndex],
-                (size - resultSortedArrayIndex) * sizeof(int));
+               &secondSortedArray[secondSortedArrayIndex],
+               (size - resultSortedArrayIndex) * sizeof(int));
 
         /*for(int i = resultSortedArrayIndex; i < size; i++)
           {
@@ -52,7 +52,7 @@ int* mergeSort(int array[], int size)
     }
     else
     {
-        for(int i = resultSortedArrayIndex; i < size; i++)
+        for (int i = resultSortedArrayIndex; i < size; i++)
         {
             resultSortedArray[i] = firstSortedArray[firstSortedArrayIndex];
             firstSortedArrayIndex++;
@@ -71,17 +71,17 @@ int* mergeSort(int array[], int size)
 int main(int argc, char** argv)
 {
     int array[] = {40, 2, 78, 1100, 23, 45, 89, 200, 429, 234, 485, 1, 9, 29};
-    int size = sizeof(array)/sizeof(array[0]);
+    int size = sizeof(array) / sizeof(array[0]);
     int* resultArray = mergeSort(array, size);
 
     /* resultArray is equal to array */
-    for(int i = 0; i < size; i++)
+    for (int i = 0; i < size; i++)
     {
         printf("%d, ", resultArray[i]);
     }
     printf("\n");
 
-    for(int i = 0; i < size; i++)
+    for (int i = 0; i < size; i++)
     {
         printf("%d, ", array[i]);
     }

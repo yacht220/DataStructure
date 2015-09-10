@@ -12,9 +12,9 @@ int partition(int array[], int left, int right)
     int firstLargerIndex = left+1;
     int pivotIndex = 0;
     int tmpValue = 0;
-    for(int index = firstLargerIndex; index <= right; index++)
+    for (int index = firstLargerIndex; index <= right; index++)
     {
-        if(array[index] < pivot)
+        if (array[index] < pivot)
         {
             tmpValue = array[index];
             array[index] = array[firstLargerIndex];
@@ -84,9 +84,9 @@ int partitionOptimized(int array[], int left, int right)
 
     for (;;)
     {
-        while(array[++i] < pivot) {}
+        while (array[++i] < pivot) {}
         // BUG!! j could be 0!!
-        while(array[--j] > pivot) {}
+        while (array[--j] > pivot) {}
 
         if (i < j)
         {
@@ -109,7 +109,7 @@ int partitionOptimized(int array[], int left, int right)
 
 void quickSort(int array[], int left, int right)
 {
-    if(left >= right)
+    if (left >= right)
     {
         return;
     }

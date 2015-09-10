@@ -28,6 +28,7 @@ void quickSelect(int array[], int left, int right, int kthMin)
         for (;;)
         {
             while (array[++i] < pivot) {}
+            // BUG!! j could be 0!!
             while (array[--j] > pivot) {}
             if (i < j)
             {

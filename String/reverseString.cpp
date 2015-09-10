@@ -8,7 +8,7 @@
 
 void reverseString(char* str)
 {
-    if(NULL == str)
+    if (NULL == str)
     {
         printf("Empty string.\n");
         return;
@@ -17,14 +17,14 @@ void reverseString(char* str)
     char charTmp = '\0';
     int size = 0;
 
-    while('\0' != *(strTmp))
+    while ('\0' != *(strTmp))
     {
         size++;
         strTmp++;
     }
     strTmp--; 
 
-    for(int i = 0; i < size/2; i++ )
+    for (int i = 0; i < size / 2; i++ )
     {
         charTmp = *strTmp;
         *strTmp = *str;
@@ -36,9 +36,9 @@ void reverseString(char* str)
 
 int main(int argc, char** argv)
 {
-    if(argc < 2)
+    if (argc < 2)
     {
-        printf("Wrong input.\n");
+        printf ("Wrong input.\n");
         return -1;
     }
 
