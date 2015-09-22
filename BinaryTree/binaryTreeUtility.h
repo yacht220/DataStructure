@@ -7,6 +7,8 @@ struct Node
 {
   Node *left;
   Node *right;
+  int longestDistanceToRootLeft; // For findLongestDistanceBetween2NodesInBinaryTree.cpp only.
+  int longestDistanceToRootRight; // For findLongestDistanceBetween2NodesInBinaryTree.cpp only.
   int num;
 };
 typedef Node* PNode;

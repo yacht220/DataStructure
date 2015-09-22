@@ -43,7 +43,10 @@ void insertBST(PNode* root, int value)
 void createBST(PNode *t)
 {        
     printf("Create binary search tree.\n");
-    int array[ARRAY_SIZE] = {5,2,1,4,7,8,3,6,9,10};
+    //int array[ARRAY_SIZE] = {5,2,1,4,7,8,3,6,9,10};
+    //int array[ARRAY_SIZE] = {1,2,3,4,5,6,7,8,9,10};
+    //int array[ARRAY_SIZE] = {10,9,8,7,6,5,4,3,2,1};
+    int array[ARRAY_SIZE] = {9,5,4,3,2,1,6,7,8,10};
     for (int i = 0; i < ARRAY_SIZE; i++)
     {
         insertBST(t, array[i]);

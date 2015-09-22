@@ -65,4 +65,6 @@ int main(int argc, char** argv)
     /* Reuse BST creation since BST is a kind of Binary Tree. */
     createBST(&root); 
     findPathEqual2Sum(root, sum, stack, 0);
+
+    return 1;
 }

@@ -104,4 +104,6 @@ int main(int argc, char** argv)
     postOrderBinaryTree(root);
 
     printf("\n");
+
+    return 1;
 }
