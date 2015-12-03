@@ -7,29 +7,29 @@
 #include <stdlib.h>
 #include "listUtility.h"
 
-void insertNodeToSimplyLinkedList(Node*& head, int value)
+void insertNodeToSimplyLinkedList(SimplyLinkedListNode*& head, int value)
 {
     if (NULL == head)
     {
         printf("Empty simply linked list. Create a head.\n");
-        head = (Node*)malloc(sizeof(Node));
+        head = (SimplyLinkedListNode*)malloc(sizeof(SimplyLinkedListNode));
         head->data = value;
         head->next = NULL;
         return;
     }
 
-    Node* curPtr = head;
+    SimplyLinkedListNode* curPtr = head;
     while (NULL != curPtr->next)
     {
         curPtr = curPtr->next;
     }
-    Node* newNode = (Node*)malloc(sizeof(Node));
+    SimplyLinkedListNode* newNode = (SimplyLinkedListNode*)malloc(sizeof(SimplyLinkedListNode));
     newNode->data = value;
     newNode->next = NULL;
     curPtr->next = newNode;
 }
 
-void deleteNodeFromSimplyLinkedList(Node*& head, int value)
+void deleteNodeFromSimplyLinkedList(SimplyLinkedListNode*& head, int value)
 {
     if (NULL == head)
     {
@@ -37,7 +37,7 @@ void deleteNodeFromSimplyLinkedList(Node*& head, int value)
         return;
     }
 
-    Node* listPtr = head;
+    SimplyLinkedListNode* listPtr = head;
 
     if (head->data == value)
     {
@@ -54,7 +54,7 @@ void deleteNodeFromSimplyLinkedList(Node*& head, int value)
 
     if (listPtr->next != NULL)
     {
-        Node* targetNode = listPtr->next;
+        SimplyLinkedListNode* targetNode = listPtr->next;
         listPtr->next = listPtr->next->next;
         free(targetNode);
     }
@@ -64,9 +64,9 @@ void deleteNodeFromSimplyLinkedList(Node*& head, int value)
     }
 }
 
-Node* initSimplyLinkedList(int array[], int size)
+SimplyLinkedListNode* initSimplyLinkedList(int array[], int size)
 {
-    Node* head = NULL;
+    SimplyLinkedListNode* head = NULL;
     for (int i = 0; i < size; i++)
     {
         insertNodeToSimplyLinkedList(head, array[i]);
@@ -74,7 +74,7 @@ Node* initSimplyLinkedList(int array[], int size)
     return head;
 }
 
-void printSimplyLinkedList(Node* head)
+void printSimplyLinkedList(SimplyLinkedListNode* head)
 {
     if (NULL == head)
     {
@@ -82,11 +82,58 @@ void printSimplyLinkedList(Node* head)
         return;
     }
 
-    Node* cur = head;
+    SimplyLinkedListNode* cur = head;
     while (NULL != cur)
     {
         printf("%d, ", cur->data);
         cur = cur->next;
     }
     printf("\n");
+}
+
+void insertNodeToRearOfDoublyLinkedList(DoublyLinkedListNode*& head, int num)
+{
+    if (NULL == head)
+    {
+        head = (DoublyLinkedListNode*)malloc(sizeof(DoublyLinkedListNode));
+        head->num = num;
+        head->prev = NULL;
+        head->next = NULL;
+    }
+    else
+    {
+        DoublyLinkedListNode* tmpNode = head;
+        DoublyLinkedListNode* newNode = (DoublyLinkedListNode*)malloc(sizeof(DoublyLinkedListNode));
+        newNode->num = num;
+        newNode->next = NULL;
+        while (NULL != tmpNode->next)
+        {
+            tmpNode = tmpNode->next;
+        }
+        tmpNode->next = newNode;
+        newNode->prev = tmpNode;
+    }
+}
+
+void deleteRearNodeInDoublyLinkedList(DoublyLinkedListNode*& head)
+{
+    if (NULL != head)
+    {
+        DoublyLinkedListNode* tmpNode = head;
+        while (NULL != tmpNode->next)
+        {
+            tmpNode = tmpNode->next;
+        }
+        if (head == tmpNode)
+        {
+            free(tmpNode);
+            head = NULL;
+        }
+        else
+        {
+            tmpNode = tmpNode->prev;
+            free(tmpNode->next);
+            tmpNode->next = NULL;
+        }
+    }
 }

@@ -1,15 +1,27 @@
 #ifndef LIST_UTILITY_H
 #define LIST_UTILILTY_H
 
-typedef struct Node
+/* Simply linked list */
+typedef struct SimplyLinkedListNode
 {
     int data;
-    Node* next;
-}Node;
+    SimplyLinkedListNode* next;
+}SimplyLinnkedListNode;
 
-void printSimplyLinkedList(Node* head);
-Node* initSimplyLinkedList(int array[], int size);
-void insertNodeToSimplyLinkedList(Node*& head, int value);
-void deleteNodeFromSimplyLinkedList(Node*& head, int value);
+void printSimplyLinkedList(SimplyLinkedListNode* head);
+SimplyLinkedListNode* initSimplyLinkedList(int array[], int size);
+void insertNodeToSimplyLinkedList(SimplyLinkedListNode*& head, int value);
+void deleteNodeFromSimplyLinkedList(SimplyLinkedListNode*& head, int value);
+
+/* Doubly linked list */
+struct DoublyLinkedListNode
+{
+    int num;
+    DoublyLinkedListNode* prev;
+    DoublyLinkedListNode* next;
+};
+
+void insertNodeToRearOfDoublyLinkedList(DoublyLinkedListNode*& head, int num);
+void deleteRearNodeInDoublyLinkedList(DoublyLinkedListNode*& head);
 
 #endif

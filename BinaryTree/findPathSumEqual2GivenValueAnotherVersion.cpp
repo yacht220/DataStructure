@@ -6,84 +6,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include "binaryTreeUtility.h"
-
-/*struct StackNode
-  {
-  int num;
-  StackNode* next;
-  };
-
-  void pushStack(StackNode*& top, int num)
-  {
-  StackNode* tmpNode = (StackNode*)malloc(sizeof(StackNode));
-  tmpNode->num = num;
-  tmpNode->next = top;
-  top = tmpNode;
-  }
-
-  void popStack(StackNode*& top)
-  {
-  if (NULL != top)
-  {
-  StackNode* tmpNode = top;
-  top = top->next;
-  free(tmpNode);
-  }
-  }*/
-
-struct DoublyLinkedListNode
-{
-    int num;
-    DoublyLinkedListNode* prev;
-    DoublyLinkedListNode* next;
-};
-
-void insertNodeToRearOfDoublyLinkedList(DoublyLinkedListNode*& head, int num)
-{
-    if (NULL == head)
-    {
-        head = (DoublyLinkedListNode*)malloc(sizeof(DoublyLinkedListNode));
-        head->num = num;
-        head->prev = NULL;
-        head->next = NULL;
-    }
-    else
-    {
-        DoublyLinkedListNode* tmpNode = head;
-        DoublyLinkedListNode* newNode = (DoublyLinkedListNode*)malloc(sizeof(DoublyLinkedListNode));
-        newNode->num = num;
-        newNode->next = NULL;
-        while (NULL != tmpNode->next)
-        {
-            tmpNode = tmpNode->next;
-        }
-        tmpNode->next = newNode;
-        newNode->prev = tmpNode;
-    }
-}
-
-void deleteRearNodeInDoublyLinkedList(DoublyLinkedListNode*& head)
-{
-    if (NULL != head)
-    {
-        DoublyLinkedListNode* tmpNode = head;
-        while (NULL != tmpNode->next)
-        {
-            tmpNode = tmpNode->next;
-        }
-        if (head == tmpNode)
-        {
-            free(tmpNode);
-            head = NULL;
-        }
-        else
-        {
-            tmpNode = tmpNode->prev;
-            free(tmpNode->next);
-            tmpNode->next = NULL;
-        }
-    }
-}
+#include "../List/listUtility.h"
+/* It could use stack instead of doubly linked list */
+//#include "../Stack/stackUtility.h"
 
 void findAllPathsWithGivenSum(const Node* root, int givenSum)
 {
