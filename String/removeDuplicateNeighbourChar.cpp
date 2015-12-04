@@ -43,4 +43,6 @@ int main(int argc, char** argv)
 
     removeDuplicateNeighbourChar(argv[1]);
     printf("Result: %s\n", argv[1]);
+    
+    return 1;
 }

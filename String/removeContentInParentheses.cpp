@@ -76,4 +76,5 @@ int main(int argc, char** argv)
 
     removeContentInParentheses(argv[1]);
     printf("Result: %s\n", argv[1]);
+    return 1;
 }
