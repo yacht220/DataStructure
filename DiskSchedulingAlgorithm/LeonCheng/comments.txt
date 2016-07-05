@@ -1,0 +1,18 @@
+我写了个程序跑了Yizhou的数据，结果为10111, 16982，几秒钟就能跑出来。
+
+我觉得这道题目可以简化为：每个点不是往上走的时候读，就是往下走的时候去读。也就是每个点有两种可能性，穷举下来有2的N-1次方种可能 （因为最后面的那个点只有一种可能性）。我按照这个写出来，计算20组数据还是很快的，再大估计就不行了。
+
+用bitset简单写的，最多支持128个点，可优化成无限制。
+
+cncd-av-vm-229-68:/p4/chengl6_ws_xx/project_03 # ./main test1.in
+420
+830
+cncd-av-vm-229-68:/p4/chengl6_ws_xx/project_03 # ./main test2.in
+2080
+4090
+cncd-av-vm-229-68:/p4/chengl6_ws_xx/project_03 # ./main test5.in
+4942
+9712
+cncd-av-vm-229-68:/p4/chengl6_ws_xx/project_03 # ./main test6.in
+10111
+16892

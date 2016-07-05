@@ -52,7 +52,7 @@ public:
     DataSet() : startPos(0, 0)
     {
         setSize = 0;    
-        minCost = 0xFFFFFFF;
+        minCost = 0xFFFFFFFF;
     }
     
     void readDataFromFile(const char* strFileName)
@@ -100,7 +100,7 @@ private:
         {
             if (start != 0)
             {
-                curCost = computeCost(start - 1);
+                curCost = computeCurCostWithBackToStartPos(start - 1);
                 if (minCost < curCost)
                 {
                     printf("Return, curCost %d\n", curCost);
@@ -143,7 +143,7 @@ private:
         return totalCost;
     }
     
-    unsigned int computeCost(unsigned int end)
+    unsigned int computeCurCostWithBackToStartPos(unsigned int end)
     {
         unsigned int totalCost = startPos.costToFetchData(vecPosSetTmp[0]);
         
@@ -159,7 +159,7 @@ private:
             }
         }
         
-        return totalCost;
+        return totalCost += vecPosSetTmp[end].costToFetchData(startPos) - COST_FETCH_DATA;
     }
     
     void swapVecElem(unsigned int posOne, unsigned int posTwo)
