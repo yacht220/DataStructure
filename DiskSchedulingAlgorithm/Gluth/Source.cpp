@@ -3,7 +3,7 @@
 
 using namespace std;
 const int largediskclinder = 1200;
-const int max = 2147483647;
+const int maxInt = 2147483647;
 int diskinfo[largediskclinder];
 int dp[largediskclinder][largediskclinder];
 
@@ -31,7 +31,7 @@ void compute(int num)
     int i, j;
     for (i = 2; i <= num; i++)
     {
-        dp[i][i - 1] = max;
+        dp[i][i - 1] = maxInt;
         for (j = 0; j < i-1; j++)
         {
             dp[i][j] = dp[i - 1][j] + disksectord(i, i - 1);
@@ -41,10 +41,10 @@ void compute(int num)
     }
 }
 
-int main()
+int main(int argc, char** argv)
 {
     ifstream myfile;
-    myfile.open("C:\\Users\\gaog6\\Desktop\\test\\test3.in");
+    myfile.open(argv[1]);
     int num;
 
     
@@ -63,7 +63,7 @@ int main()
         num--;
     }
     compute(s);
-    int re = max;
+    int re = maxInt;
     int simple = 0;
     for (i = 0; i < s; i++)
     {
@@ -76,6 +76,6 @@ int main()
     simple += 400 * x + s * 10;
     cout << simple << endl;
     myfile.close();
-    system("pause");
+    //system("pause");
     return 0;
 }
