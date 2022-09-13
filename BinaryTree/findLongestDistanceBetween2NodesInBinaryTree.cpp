@@ -24,7 +24,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "binaryTreeUtility.h"
+#include "binaryTreeUtilityRecursion.h"
 
 /*
  * It's the solution to find the longest distance through the root in Binary Tree. 
@@ -130,8 +130,8 @@ int findLongestDistance(Node* root)
 
 int main(int argc, char** argv)
 {
-    Node* root = NULL;
-    createBST(&root);
+    int array[ARRAY_SIZE] = {9,5,4,3,2,1,6,7,8,10};
+    Node* root = createBST(array, sizeof(array)/sizeof(array[0]));
     //findLongestDistanceThroughRoot(root);
     int longestDistance = findLongestDistance(root);    
     printf("The longest distance between 2 nodes in Binary Tree is %d.\n", longestDistance);
